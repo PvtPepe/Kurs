@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="AuthorizationModule.Views.AuthMenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             Width="64" Height="720">
+    <UserControl.Resources>
+        <ResourceDictionary Source="MaterialDict.xaml"/>
+    </UserControl.Resources>
+    <Grid Width="64" Height="720">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="62*"/>
+            <RowDefinition Height="62*"/>
+            <RowDefinition Height="594*"/>
+        </Grid.RowDefinitions>
+        <Button Height="60" Width="60" Grid.Row="0" Command="{Binding NavigateCommand}" CommandParameter="LoginView">
+            <Image Source="/AuthorizationModule;component/Resourses/loginicon.png"/>
+        </Button>
+        <Button Height="60" Width="60" Grid.Row="1" Command="{Binding NavigateCommand}" CommandParameter="SignupView">
+            <Image Source="/AuthorizationModule;component/Resourses/signupicon.png"/>
+        </Button>
+    </Grid>
+</UserControl>
