@@ -15,10 +15,10 @@
             <RowDefinition Height="62*"/>
             <RowDefinition Height="594*"/>
         </Grid.RowDefinitions>
-        <Button Height="60" Width="60" Grid.Row="0" Command="{Binding NavigateCommand}" CommandParameter="LoginView">
+        <Button Height="60" Width="60" Grid.Row="0" Command="{Binding NavigateCommand}" CommandParameter="LoginView" Background="{x:Null}">
             <Image Source="/AuthorizationModule;component/Resourses/loginicon.png"/>
         </Button>
-        <Button Height="60" Width="60" Grid.Row="1" Command="{Binding NavigateCommand}" CommandParameter="SignupView">
+        <Button Height="60" Width="60" Grid.Row="1" Command="{Binding NavigateCommand}" CommandParameter="SignupView" Background="{x:Null}">
             <Image Source="/AuthorizationModule;component/Resourses/signupicon.png"/>
         </Button>
     </Grid>

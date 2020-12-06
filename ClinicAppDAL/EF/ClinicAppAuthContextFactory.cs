@@ -12,7 +12,7 @@ namespace ClinicAppDAL.EF
         public ClinicAppAuthContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ClinicAppAuthContext>();
-            var connectionString = @"data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\AuthDB.mdf;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework;";
+            var connectionString = @"Server=tcp:kursdbserver.database.windows.net,1433;Initial Catalog=AuthDB;Persist Security Info=False;User ID=admin;Password=StrongPassword1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             optionsBuilder.UseSqlServer(connectionString, options => options.EnableRetryOnFailure());
             return new ClinicAppAuthContext(optionsBuilder.Options);
         }

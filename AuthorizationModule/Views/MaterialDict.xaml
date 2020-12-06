@@ -4,7 +4,7 @@
                     xmlns:material ="http://materialdesigninxaml.net/winfx/xaml/themes"
                     >
     <ResourceDictionary.MergedDictionaries>
-        <material:BundledTheme BaseTheme="Light" PrimaryColor="DeepPurple" SecondaryColor="Lime"/>
+        <material:CustomColorTheme BaseTheme="Light" PrimaryColor="#3EB489" SecondaryColor="MediumPurple"/>
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
