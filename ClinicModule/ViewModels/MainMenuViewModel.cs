@@ -11,8 +11,7 @@ namespace ClinicModule.ViewModels
     {
         public MainMenuViewModel()
         {
-            if (Thread.CurrentPrincipal.IsInRole("User")) UsersButtonIsEnabled = false;
-            else UsersButtonIsEnabled = true;
+            UsersButtonIsEnabled = !Thread.CurrentPrincipal.IsInRole("User");
         }
 
         private bool _usersButtonIsEnabled;
