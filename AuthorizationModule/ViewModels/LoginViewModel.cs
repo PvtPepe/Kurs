@@ -25,7 +25,7 @@ namespace AuthorizationModule.ViewModels
         {
             UserRepo = new UserRepo(new ClinicAppAuthContext());
             Users = new ObservableCollection<User>(UserRepo.GetAll());
-            LoginButtonClick = new DelegateCommand(LoginExecute, LoginCanExecute)/*.ObservesProperty(() => Password)*/;
+            LoginButtonClick = new DelegateCommand(LoginExecute, LoginCanExecute);
 
             StatusBarVisibility = Visibility.Hidden;
         }
