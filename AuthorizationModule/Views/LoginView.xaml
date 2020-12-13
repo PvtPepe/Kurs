@@ -8,27 +8,25 @@
         <ResourceDictionary Source="MaterialDict.xaml"/>
     </UserControl.Resources>
     <Grid Width="300" Height="400" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
-            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="400"  Width="300" CornerRadius="10" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}">
-                <Grid Margin="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition/>
-                        <RowDefinition Height="2*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock x:Name="AuthLoginHeader" Grid.Column="0" Grid.Row="0" TextAlignment="Center" Text="Log in" FontSize="26" Margin="0,20,0,0"/>
-                    <TextBlock x:Name="AuthLoginLogBlock" Grid.Row="1" Text="Insert your login:" Margin="10,30,10,0" FontSize="18"/>
-                    <TextBox x:Name="AuthLoginLogBox" Text="{Binding Login}" Grid.Row="2" Margin="10,15,10,10" FontSize="18" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"/>
-                    <TextBlock x:Name="AuthLoginPassBlock" Grid.Row="3" Text="Insert your password:" Margin="10,30,10,0" FontSize="18"/>
-                    <PasswordBox x:Name="AuthLoginPassBox" Grid.Row="4" Margin="10,15,10,10" FontSize="18" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" PasswordChanged="AuthLoginPassBox_PasswordChanged"/>
-                    <Button x:Name="AuthLoginLogButton" Command="{Binding LoginButtonClick}" Content="Log in" Grid.Row="6" Margin="10" FontSize="18" />
-                    <TextBlock x:Name="StatusLabel" Grid.Row="5" Text="Login or password are incorrect" Margin="10,0,10,10" Foreground="#DDFF0000" Visibility="{Binding StatusBarVisibility}"/>
-                </Grid>
-            </Border>
-
-
-        </Grid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="400"  Width="300" CornerRadius="10" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="AuthLoginHeader" Grid.Column="0" Grid.Row="0" TextAlignment="Center" Text="Log in" FontSize="26" Margin="0,20,0,0"/>
+                <TextBlock x:Name="AuthLoginLogBlock" Grid.Row="1" Text="Insert your login:" Margin="10,30,10,0" FontSize="18"/>
+                <TextBox x:Name="AuthLoginLogBox" Text="{Binding Login}" Grid.Row="2" Margin="10,15,10,10" FontSize="18" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"/>
+                <TextBlock x:Name="AuthLoginPassBlock" Grid.Row="3" Text="Insert your password:" Margin="10,30,10,0" FontSize="18"/>
+                <PasswordBox x:Name="AuthLoginPassBox" Grid.Row="4" Margin="10,15,10,10" FontSize="18" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" PasswordChanged="AuthLoginPassBox_PasswordChanged"/>
+                <Button x:Name="AuthLoginLogButton" Command="{Binding LoginButtonClick}" Content="Log in" Grid.Row="6" Margin="10" FontSize="18" />
+                <TextBlock x:Name="StatusLabel" Grid.Row="5" Text="Login or password are incorrect" Margin="10,0,10,10" Foreground="#DDFF0000" Visibility="{Binding StatusBarVisibility}"/>
+            </Grid>
+        </Border>
+    </Grid>
 </UserControl>

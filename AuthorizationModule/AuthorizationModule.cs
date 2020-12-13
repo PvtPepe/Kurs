@@ -16,7 +16,7 @@ namespace AuthorizationModule
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            IRegion region = _regionManager.Regions["AuthRegion"];
+            IRegion AuthRegion = _regionManager.Regions["AuthRegion"];
             IRegion MenuRegion = _regionManager.Regions["MenuRegion"];
 
             /*GenericIdentity identity = new GenericIdentity("User");
@@ -25,7 +25,7 @@ namespace AuthorizationModule
             Thread.CurrentPrincipal = genericPrincipal;*/
 
             LoginView view1 = containerProvider.Resolve<LoginView>();
-            region.Add(view1);
+            AuthRegion.Add(view1);
 
             AuthMenuView view2 = containerProvider.Resolve<AuthMenuView>();
             MenuRegion.Add(view2);
