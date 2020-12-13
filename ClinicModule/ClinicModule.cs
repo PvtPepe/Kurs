@@ -20,13 +20,11 @@ namespace ClinicModule
 
             MainMenuView view2 = containerProvider.Resolve<MainMenuView>();
             MenuRegion.Add(view2);
-            DoctorListView view3 = containerProvider.Resolve<DoctorListView>();
-            MainRegion.Add(view3);
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
+            containerRegistry.RegisterForNavigation<DoctorListView>();
         }
     }
 }
