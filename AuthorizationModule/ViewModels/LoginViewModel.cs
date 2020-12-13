@@ -11,22 +11,28 @@ using System.Collections.ObjectModel;
 using System.Security;
 using System.Windows;
 using Prism.Modularity;
+using Prism.Regions;
+using System.Security.Principal;
+using System.Threading;
 
 namespace AuthorizationModule.ViewModels
 {
     public class LoginViewModel : BindableBase
     {
-
+        private IModuleManager _moduleManager;
+        private IRegionManager _regionManager;
         public IList<User> Users { get; }
         public UserRepo UserRepo { get; }
         public DelegateCommand LoginButtonClick { get; private set; }
         public String Password { private get; set; }
 
-        public LoginViewModel()
+        public LoginViewModel(IModuleManager moduleManager, IRegionManager regionManager)
         {
             UserRepo = new UserRepo(new ClinicAppAuthContext());
             Users = new ObservableCollection<User>(UserRepo.GetAll());
             LoginButtonClick = new DelegateCommand(LoginExecute, LoginCanExecute);
+            _moduleManager = moduleManager;
+            _regionManager = regionManager;
 
             StatusBarVisibility = Visibility.Hidden;
         }
@@ -56,10 +62,20 @@ namespace AuthorizationModule.ViewModels
             if (UserRepo.CheckPassword(Password) && UserRepo.CheckLogin(Login))
             {
                 StatusBarVisibility = Visibility.Hidden;
+                _moduleManager.LoadModule("ClinicModule");
             }
             else
             {
                 StatusBarVisibility = Visibility.Visible;
+                GenericIdentity identity = new GenericIdentity("Admin");
+                string[] userRoles = new string[]{ "Admin" };
+                GenericPrincipal genericPrincipal = new GenericPrincipal(identity, userRoles);
+                Thread.CurrentPrincipal = genericPrincipal;
+                IRegion MenuRegion = _regionManager.Regions["MenuRegion"];
+                IRegion AuthRegion = _regionManager.Regions["AuthRegion"];
+                MenuRegion.RemoveAll();
+                AuthRegion.RemoveAll();
+                _moduleManager.LoadModule("ClinicModule");
             }
         }
 

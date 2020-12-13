@@ -22,7 +22,7 @@
         <Button Style="{DynamicResource MaterialDesignIconButton}" Content="{material:PackIcon Kind=Face}" Height="60" Width="60" Grid.Row="1" Command="{Binding NavigateCommand}" CommandParameter="SignupView" Margin="2,1,2,1"/>
         <Button Style="{DynamicResource MaterialDesignIconButton}" Content="{material:PackIcon Kind=Calendar}" Height="60" Width="60" Grid.Row="2" Command="{Binding NavigateCommand}" CommandParameter="LoginView" Margin="2,1,2,1"/>
         <Button Style="{DynamicResource MaterialDesignIconButton}" Content="{material:PackIcon Kind=ArchiveOutline}" Height="60" Width="60" Grid.Row="3" Command="{Binding NavigateCommand}" CommandParameter="LoginView" Margin="2,1,2,1"/>
-        <Button Style="{DynamicResource MaterialDesignIconButton}" Content="{material:PackIcon Kind=AccountOutline}" Height="60" Width="60" Grid.Row="4" Command="{Binding NavigateCommand}" CommandParameter="LoginView" Margin="2,1,2,1"/>
+        <Button Style="{DynamicResource MaterialDesignIconButton}" Content="{material:PackIcon Kind=AccountOutline}" Height="60" Width="60" Grid.Row="4" Command="{Binding NavigateCommand}" IsEnabled="{Binding UsersButtonIsEnabled}" CommandParameter="LoginView" Margin="2,1,2,1"/>
     </Grid>
 </UserControl>
 

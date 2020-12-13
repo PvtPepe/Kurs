@@ -16,4 +16,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)\ClinicApp\bin\Debug\netcoreapp3.1\&quot; /Y" />
+  </Target>
 </Project>
