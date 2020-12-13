@@ -13,25 +13,25 @@
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="500"  Width="300" CornerRadius="10" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}">
             <Grid Margin="10">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
                     <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <TextBlock x:Name="AuthSignupHeader" Grid.Column="0" Grid.Row="0" TextAlignment="Center" Text="Sign up" FontSize="26" Margin="0,5,0,0"/>
                 <TextBlock x:Name="AuthSignupLogBlock" Grid.Row="1" Text="Insert your login:" Margin="10,20,10,0" FontSize="18"/>
-                <TextBox x:Name="AuthSignupLogBox" Grid.Row="2" Text="{Binding Login}" Margin="10,10,10,10" FontSize="18" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"/>
+                <TextBox x:Name="AuthSignupLogBox" Grid.Row="2" Text="{Binding Login}" Margin="10,15,10,10" FontSize="18" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"/>
                 <TextBlock x:Name="AuthSignupPassBlock" Grid.Row="3" Text="Insert your password:" Margin="10,20,10,0" FontSize="18" />
-                <PasswordBox x:Name="AuthSignupPassBox" Grid.Row="4" Margin="10" FontSize="18" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" PasswordChanged="AuthSignupPassBox_PasswordChanged" FontFamily="{DynamicResource MaterialDesignFont}"/>
+                <PasswordBox x:Name="AuthSignupPassBox" Grid.Row="4" Margin="10,15,10,10" FontSize="18" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" PasswordChanged="AuthSignupPassBox_PasswordChanged" FontFamily="{DynamicResource MaterialDesignFont}"/>
                 <Button x:Name="AuthSignupPassButton" Content="Sign up" Grid.Row="8" Margin="5" FontSize="18"/>
                 <TextBlock x:Name="StatusPassword" Grid.Row="7" Visibility="{Binding PasswordStatusBarVisibility}" Text="Passwords are not equal" Margin="10,0,10,10" Foreground="#DDFF0000"/>
                 <TextBlock x:Name="AuthSignupRepPassBlock" Grid.Row="5" Text="Repeat your password:" Margin="10,20,10,0" FontSize="18" />
-                <PasswordBox x:Name="AuthSignupRepPassBox" Grid.Row="6" Margin="10" FontSize="18" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" PasswordChanged="AuthSignupRepPassBox_PasswordChanged"/>
+                <PasswordBox x:Name="AuthSignupRepPassBox" Grid.Row="6" Margin="10,15,10,10" FontSize="18" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" PasswordChanged="AuthSignupRepPassBox_PasswordChanged"/>
 
             </Grid>
         </Border>

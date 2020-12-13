@@ -5,14 +5,6 @@
     <AssemblyName>AuthorizationModule</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Resourses\loginicon.png" />
-    <None Remove="Resourses\signupicon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\signupicon.png" />
-    <Resource Include="Resourses\loginicon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="MaterialDesignColors" Version="1.2.7" />
     <PackageReference Include="MaterialDesignThemes" Version="3.2.0" />
     <PackageReference Include="MaterialDesignThemes.Wpf" Version="1.0.1" />
@@ -21,6 +13,9 @@
   <ItemGroup>
     <ProjectReference Include="..\ClinicAppDAL.Models\ClinicAppDAL.Models.csproj" />
     <ProjectReference Include="..\ClinicAppDAL\ClinicAppDAL.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resourses\" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="xcopy &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)\ClinicApp\bin\Debug\netcoreapp3.1\&quot; /Y" />
