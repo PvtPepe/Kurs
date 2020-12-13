@@ -17,6 +17,9 @@ namespace ClinicModule
         {
             IRegion MainRegion = _regionManager.Regions["MainRegion"];
             IRegion MenuRegion = _regionManager.Regions["MenuRegion"];
+
+            MainMenuView view2 = containerProvider.Resolve<MainMenuView>();
+            MenuRegion.Add(view2);
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Collections.ObjectModel;
 using System.Security;
 using System.Windows;
+using Prism.Modularity;
 
 namespace AuthorizationModule.ViewModels
 {
