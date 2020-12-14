@@ -13,6 +13,9 @@ namespace ClinicAppDAL.Repos.ClinicRepo
         {
         }
 
+        public bool CheckDate(DateTime date, int docId)
+            => GetSome(x => (x.VisitDate == date && x.DoctorID == docId)).Count != 0; 
+
         public int GetDoctorVisitCount()
             => GetAll().Count;
 
