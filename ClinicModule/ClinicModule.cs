@@ -25,6 +25,10 @@ namespace ClinicModule
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<DoctorListView>();
+            containerRegistry.RegisterForNavigation<PatientsListView>();
+            containerRegistry.RegisterForNavigation<DiagnosesListView>();
+            containerRegistry.RegisterForNavigation<VisitsListView>();
+            containerRegistry.RegisterForNavigation<UsersListView>();
         }
     }
 }
