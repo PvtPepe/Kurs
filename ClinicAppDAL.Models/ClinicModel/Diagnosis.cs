@@ -18,5 +18,10 @@ namespace ClinicAppDAL.Models.ClinicModel
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public List<DoctorVisit> DoctorVisits { get; set; }
+
+        public override string ToString()
+        {
+            return DiagnosisName;
+        }
     }
 }
