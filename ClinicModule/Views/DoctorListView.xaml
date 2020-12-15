@@ -27,7 +27,7 @@
                 <ColumnDefinition Width="135*"/>
                 <ColumnDefinition Width="812*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Style="{DynamicResource MaterialDesignIconButton}" Content="{material:PackIcon Kind=PlusCircleOutline}" Margin="7,7,7,7" />
+            <Button Grid.Column="0" Style="{DynamicResource MaterialDesignIconButton}" Content="{material:PackIcon Kind=PlusCircleOutline}" Command="{Binding NavigateCommand}" CommandParameter="DoctorInfoView" Margin="7,7,7,7" />
             <Button Style="{DynamicResource MaterialDesignIconButton}" Grid.Column="1" Content="{material:PackIcon Kind=Magnify}" Focusable="False" IsHitTestVisible="False" Margin="7,7,7,7"/>
             <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" FontSize="14" Height="28"/>
             <ComboBox Grid.Column="3" HorizontalAlignment="Center" Width="120" Height="28">

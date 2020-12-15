@@ -29,6 +29,7 @@ namespace ClinicModule
             containerRegistry.RegisterForNavigation<DiagnosesListView>();
             containerRegistry.RegisterForNavigation<VisitsListView>();
             containerRegistry.RegisterForNavigation<UsersListView>();
+            containerRegistry.RegisterForNavigation<DoctorInfoView>();
         }
     }
 }
