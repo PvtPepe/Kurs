@@ -103,7 +103,7 @@ namespace ClinicModule.ViewModels
 
         private void DoctorAdd()
         {
-            _dialogService.ShowDialog("DiagnosisAddView", r =>
+            _dialogService.ShowDialog("DoctorAddView", r =>
             {
                 if (r.Result == ButtonResult.OK) Doctors = new ObservableCollection<Doctor>(docRepo.GetAll());
             });

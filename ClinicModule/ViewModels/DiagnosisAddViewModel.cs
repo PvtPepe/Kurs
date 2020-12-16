@@ -35,7 +35,7 @@ namespace ClinicModule.ViewModels
             set { SetProperty(ref buttonName, value); }
         }
 
-        public string Title => "";
+        public string Title => "Add diagnosis";
 
         public event Action<IDialogResult> RequestClose;
 
