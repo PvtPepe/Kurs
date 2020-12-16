@@ -55,6 +55,13 @@ namespace ClinicModule.ViewModels
             set { SetProperty(ref _searchText, value); }
         }
 
+        private string _searchCombo;
+        public string SearchCombo
+        {
+            get { return _searchCombo; }
+            set { SetProperty(ref _searchCombo, value); }
+        }
+
         private void DoctorDelete()
         {
             docRepo.Delete(SelectedDoctor);
@@ -75,8 +82,24 @@ namespace ClinicModule.ViewModels
 
         private void Search()
         {
-            //Doctors = new ObservableCollection<Doctor>(docRepo.GetSome(x => x.DiagnosisName.StartsWith(SearchText)));
+            switch (SearchCombo)
+            {
+                case "First Name":
+                    Doctors = new ObservableCollection<Doctor>(docRepo.GetSome(x => x.FirstName.StartsWith(SearchText)));
+                    break;
+                case "Middle Name":
+                    Doctors = new ObservableCollection<Doctor>(docRepo.GetSome(x => x.MidName.StartsWith(SearchText)));
+                    break;
+                case "Last Name":
+                    Doctors = new ObservableCollection<Doctor>(docRepo.GetSome(x => x.LastName.StartsWith(SearchText)));
+                    break;
+                case "Speciality":
+                    Doctors = new ObservableCollection<Doctor>(docRepo.GetSome(x => x.Speciality.StartsWith(SearchText)));
+                    break;
+            }       
         }
+
+
 
         private void DoctorAdd()
         {

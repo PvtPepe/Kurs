@@ -1,8 +1,9 @@
-﻿<UserControl x:Class="ClinicModule.Views.DoctorInfoView"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:prism="http://prismlibrary.com/"             
+             xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="ClinicModule.Views.DoctorInfoView"             
              prism:ViewModelLocator.AutoWireViewModel="True">
     <UserControl.Resources>
         <ResourceDictionary Source="MaterialDict.xaml"/>
@@ -13,35 +14,31 @@
             <RowDefinition Height="62"/>
             <RowDefinition Height="62"/>
             <RowDefinition Height="62"/>
-            <RowDefinition Height="62"/>
-            <RowDefinition Height="348"/>
+            <RowDefinition Height="410"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="20,20,20,20">
             <TextBlock Text="Name:" FontSize="14"/>
-            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="FName" TextWrapping="Wrap" FontSize="14" Width="120" Margin="31,0,0,0"/>
-            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="MName" TextWrapping="Wrap" FontSize="14" Width="120" Margin="10,0,0,0"/>
-            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="SName" TextWrapping="Wrap" FontSize="14" Width="120" Margin="10,0,0,0"/>
+            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.FirstName}" TextWrapping="Wrap" FontSize="14" Width="120" Margin="31,0,0,0"/>
+            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.MidName}" TextWrapping="Wrap" FontSize="14" Width="120" Margin="10,0,0,0"/>
+            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.LastName}" TextWrapping="Wrap" FontSize="14" Width="120" Margin="10,0,0,0"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="20,20,20,20">
             <TextBlock Text="Speciality:" FontSize="14"/>
-            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="Spec" TextWrapping="Wrap" FontSize="14" Width="120" Margin="10,0,10,0"/>
+            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.Speciality}" TextWrapping="Wrap" FontSize="14" Width="120" Margin="10,0,10,0"/>
             <TextBlock Text="Length of service:" FontSize="14"/>
-            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="Los" TextWrapping="Wrap" FontSize="14" Width="120" Margin="10,0,0,0"/>
+            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.LengthOfService}" TextWrapping="Wrap" FontSize="14" Width="120" Margin="10,0,0,0"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="20,20,20,20">
             <TextBlock Text="Number:" FontSize="14"/>
-            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="numb" TextWrapping="Wrap" FontSize="14" Width="120" Margin="18,0,10,0"/>
+            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.DocNumber}" TextWrapping="Wrap" FontSize="14" Width="120" Margin="18,0,10,0"/>
         </StackPanel>
-        <StackPanel Grid.Row="3" Orientation="Horizontal">
-            <Button VerticalAlignment="Center" x:Name="AddOrCh" Content="add" FontSize="14" Height="30" Width="170" Margin="20,0,0,0"  />
-            <Button VerticalAlignment="Center" x:Name="del" Content="delete" FontSize="14" Height="30" Width="170" Margin="20,0,0,0" />
-        </StackPanel>
-        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="15">
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="15">
             <TextBlock Text="From:" Margin="0,5,0,0" FontSize="14"/>
-            <DatePicker Width="125" Margin="10,0,10,0" FontSize="14"/>
+            <DatePicker Width="125" Margin="10,0,10,0" FontSize="14" SelectedDate="{Binding LeftBorderDate}"/>
             <TextBlock Text="To:" Margin="0,5,0,0" FontSize="14"/>
-            <DatePicker Width="125" Margin="10,0,0,0" FontSize="14"/>
+            <DatePicker Width="125" Margin="10,0,0,0" FontSize="14" SelectedDate="{Binding RightBorderDate}"/>
+            <Button Style="{DynamicResource MaterialDesignIconButton}" Content="{material:PackIcon Kind=Magnify}" Command="{Binding DShowList}" Margin="10,0,0,0" Height="32" Width="32"/>
         </StackPanel>
-        <ListBox Grid.Row="5" Margin="10"/>
+        <ListBox Grid.Row="4" Margin="10" ItemsSource="{Binding Visits}"/>
     </Grid>
 </UserControl>

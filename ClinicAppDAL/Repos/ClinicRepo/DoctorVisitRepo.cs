@@ -24,9 +24,9 @@ namespace ClinicAppDAL.Repos.ClinicRepo
 
         public List<int> GetPatientsIdByDate(DateTime leftBorderDate, DateTime rightBorderDate, int docId) 
             => GetSome(x =>
-            DateTime.Compare(leftBorderDate, x.VisitDate) >= 0 && 
-            DateTime.Compare(rightBorderDate, x.VisitDate) <= 0 && 
-            x.DoctorID == docId).ConvertAll(Converter);
+            (DateTime.Compare(leftBorderDate, x.VisitDate) <= 0 && 
+            DateTime.Compare(rightBorderDate, x.VisitDate) >= 0 && 
+            x.DoctorID == docId)).ConvertAll(Converter);
 
         private int Converter(DoctorVisit doctorVisit) 
             => doctorVisit.PatientID;
