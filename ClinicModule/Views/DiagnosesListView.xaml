@@ -17,7 +17,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="_diagnosisList" Grid.Row="1" ItemsSource="{Binding Diagnoses}" ItemStringFormat="">
+        <ListBox x:Name="_diagnosisList" Grid.Row="1" ItemsSource="{Binding Diagnoses}" SelectedItem="{Binding SelectedDiagnosis}" ItemStringFormat="">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding DiagnosisSelectedCommand}" CommandParameter="{Binding SelectedItem, ElementName=_diagnosisList}"/>
@@ -29,13 +29,15 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="62*"/>
                 <ColumnDefinition Width="62*"/>
+                <ColumnDefinition Width="62*"/>
                 <ColumnDefinition Width="145*"/>
-                <ColumnDefinition Width="135*"/>
-                <ColumnDefinition Width="812*"/>
+                <ColumnDefinition Width="62*"/>
+                <ColumnDefinition Width="823*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Style="{DynamicResource MaterialDesignIconButton}" Content="{material:PackIcon Kind=PlusCircleOutline}" Margin="7,7,7,7" />
-            <Button Style="{DynamicResource MaterialDesignIconButton}" Grid.Column="1" Content="{material:PackIcon Kind=Magnify}" Focusable="False" IsHitTestVisible="False" Margin="7,7,7,7"/>
-            <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" FontSize="14" Height="28"/>
+            <Button Grid.Column="0" Style="{DynamicResource MaterialDesignIconButton}" Content="{material:PackIcon Kind=PlusCircleOutline}" Command="{Binding DiagnosisAddCommand}" Margin="7,7,7,7" />
+            <Button Style="{DynamicResource MaterialDesignIconButton}" Grid.Column="1" Content="{material:PackIcon Kind=TrashCanOutline}" Command="{Binding DiagnosisDeleteCommand}"  Margin="7,7,7,7"/>
+            <TextBox x:Name="_searchbox" Grid.Column="3" Text="{Binding SearchText}" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" FontSize="14" Height="28"/>
+            <Button Style="{DynamicResource MaterialDesignIconButton}" Grid.Column="2" Content="{material:PackIcon Kind=Magnify}" Command="{Binding SearchCommand}"  Margin="7,7,7,7"/>
         </Grid>
         <ContentControl Grid.Row="1" Grid.Column="1" prism:RegionManager.RegionName="DiagnosesMainRegion"/>
     </Grid>

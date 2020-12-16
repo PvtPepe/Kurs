@@ -11,5 +11,10 @@ namespace ClinicModule.Views
         {
             InitializeComponent();
         }
+
+        private void AddOrCh_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
     }
 }

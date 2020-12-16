@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ClinicAppDAL.Repos.ClinicRepo
 {
-    class DoctorVisitRepo : BaseRepo<DoctorVisit>
+    public class DoctorVisitRepo : BaseRepo<DoctorVisit>
     {
         public DoctorVisitRepo(ClinicAppClinicContext context) : base(context)
         {

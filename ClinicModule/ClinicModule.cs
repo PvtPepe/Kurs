@@ -34,6 +34,8 @@ namespace ClinicModule
             containerRegistry.RegisterForNavigation<UserInfoView>();
             containerRegistry.RegisterForNavigation<VisitInfoView>();
             containerRegistry.RegisterForNavigation<PatientInfoView>();
+
+            containerRegistry.RegisterDialog<DiagnosisAddView, ViewModels.DiagnosisAddViewModel>();
         }
     }
 }

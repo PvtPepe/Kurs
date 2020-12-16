@@ -1,4 +1,5 @@
 ﻿using ClinicAppDAL.Models.ClinicModel;
+using ClinicAppDAL.Repos.ClinicRepo;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -10,6 +11,8 @@ namespace ClinicModule.ViewModels
 {
     public class DiagnoseInfoViewModel : BindableBase, INavigationAware
     {
+        DoctorVisitRepo visitRepo;
+        
         private Diagnosis _selectedDiagnosis;
         public Diagnosis SelectedDiagnosis
         {
@@ -17,15 +20,24 @@ namespace ClinicModule.ViewModels
             set { SetProperty(ref _selectedDiagnosis, value); }
         }
 
+        private string _decNumb;
+        public string DecNumb
+        {
+            get { return _decNumb; }
+            set { SetProperty(ref _decNumb, value); }
+        }
+
         public DiagnoseInfoViewModel()
         {
-
+            visitRepo = new DoctorVisitRepo(new ClinicAppDAL.EF.ClinicAppClinicContext());
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
             if (navigationContext.Parameters.ContainsKey("diagnose"))
                 SelectedDiagnosis = navigationContext.Parameters.GetValue<Diagnosis>("diagnose");
+            if(SelectedDiagnosis != null)
+                DecNumb = visitRepo.GetDoctorVisitCountByDiagnosis(SelectedDiagnosis.Id).ToString();
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

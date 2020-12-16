@@ -7,9 +7,9 @@ using System.Text;
 
 namespace ClinicAppDAL.Repos.ClinicRepo
 {
-    class DoctorRepo : BaseRepo<Doctor>
+    public class DoctorRepo : BaseRepo<Doctor>
     {
-        public DoctorRepo(ClinicAppAuthContext context) : base(context)
+        public DoctorRepo(ClinicAppClinicContext context) : base(context)
         {
         }
 

@@ -42,7 +42,7 @@ namespace ClinicAppDAL.Repos
         public int Update(T entity)
         {
             _table.Update(entity);
-            return SaveChanges();
+            return  SaveChanges();
         }
 
         public int Update(IList<T> entities)
