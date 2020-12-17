@@ -3,14 +3,13 @@
 namespace ClinicModule.Views
 {
     /// <summary>
-    /// Interaction logic for VisitInfoView
+    /// Interaction logic for VisitAddView
     /// </summary>
-    public partial class VisitInfoView : UserControl
+    public partial class VisitAddView : UserControl
     {
-        public VisitInfoView()
+        public VisitAddView()
         {
             InitializeComponent();
         }
-
     }
 }

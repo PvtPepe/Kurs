@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="ClinicModule.Views.VisitAddView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:prism="http://prismlibrary.com/"                
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             Background="{DynamicResource MaterialDesignLightBackground}" MinWidth="600" MaxWidth="600" MinHeight="248" MaxHeight="248">
+    <UserControl.Resources>
+        <ResourceDictionary Source="MaterialDict.xaml"/>
+    </UserControl.Resources>
+    <Grid Height="248" Width="600" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="200*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="500*"/>
+            <RowDefinition Height="62"/>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="_doctorList" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Doctors}" SelectedItem="{Binding SelectedDoctor}" ItemStringFormat=""/>
+        <ListBox x:Name="_patientList" Grid.Row="0" Grid.Column="1"  ItemsSource="{Binding Patients}" SelectedItem="{Binding SelectedPatient}" ItemStringFormat=""/>
+        <ListBox x:Name="_diagnoseList" Grid.Row="0" Grid.Column="2"  ItemsSource="{Binding Diagnoses}" SelectedItem="{Binding SelectedDiagnosis}" ItemStringFormat=""/>
+        <DatePicker  SelectedDate="{Binding VisitDate}" Grid.Row="1" Grid.Column="0"  FontSize="12" Width="120" Margin="10,0,0,0"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="1" Margin="81,0,0,0" >
+            <Button Content="Add" Width="60" Command="{Binding ButtonClick}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

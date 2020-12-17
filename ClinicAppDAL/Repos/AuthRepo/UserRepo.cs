@@ -68,5 +68,10 @@ namespace ClinicAppDAL.Repos.AuthRepo
             return Update(entity);
         }
 
+        public int GetRole (string login, string pass)
+        {
+            return GetSome(x => x.Login == login && x.Password == Encode(pass))[0].Role;
+        }
+
     }
 }

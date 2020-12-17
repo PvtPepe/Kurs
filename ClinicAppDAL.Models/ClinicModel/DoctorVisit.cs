@@ -26,5 +26,10 @@ namespace ClinicAppDAL.Models.ClinicModel
 
         [ForeignKey(nameof(PatientID))]
         public Patient Patient { get; set; }
+
+        public override string ToString()
+        {
+            return VisitDate.Date.ToString() + " " + DoctorID.ToString() + " " + PatientID.ToString() ;
+        }
     }
 }

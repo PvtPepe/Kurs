@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True"
-             TextElement.FontFamily="{DynamicResource MaterialDesignFont}">
+             TextElement.FontFamily="{DynamicResource MaterialDesignFont}" MinWidth="300" MinHeight="378" MaxWidth="300" MaxHeight="378">
     <UserControl.Resources>
         <ResourceDictionary Source="MaterialDict.xaml"/>
     </UserControl.Resources>
