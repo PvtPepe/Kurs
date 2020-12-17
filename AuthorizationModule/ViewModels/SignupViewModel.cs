@@ -15,7 +15,7 @@ namespace AuthorizationModule.ViewModels
     {
         public IList<User> Users { get; }
         public UserRepo UserRepo { get; }
-        DelegateCommand SignUpButtonClick;
+        public DelegateCommand SignupCommand { get; private set; }
         public String Password { private get; set; }
         public String RepeatPassword { private get; set; }
 
@@ -23,8 +23,7 @@ namespace AuthorizationModule.ViewModels
         {
             UserRepo = new UserRepo(new ClinicAppAuthContext());
             Users = new ObservableCollection<User>(UserRepo.GetAll());
-
-            LoginStatusBarVisibility = Visibility.Hidden;
+            SignupCommand = new DelegateCommand(SignUp);
             PasswordStatusBarVisibility = Visibility.Hidden;
         }
 
@@ -35,11 +34,11 @@ namespace AuthorizationModule.ViewModels
             set { SetProperty(ref _login, value); }
         }
 
-        private Visibility _loginStatusBarVisibility;
-        public Visibility LoginStatusBarVisibility
+        private string errorText;
+        public string ErrorText
         {
-            get { return _loginStatusBarVisibility; }
-            set { SetProperty(ref _loginStatusBarVisibility, value); }
+            get { return errorText; }
+            set { SetProperty(ref errorText, value); }
         }
 
         private Visibility _passwordStatusBarVisibility;
@@ -49,5 +48,31 @@ namespace AuthorizationModule.ViewModels
             set { SetProperty(ref _passwordStatusBarVisibility, value); }
         }
 
+        private void SignUp()
+        {
+            if (UserRepo.CheckLogin(Login) || Login == null)
+            {
+                ErrorText = "User is exist";
+                PasswordStatusBarVisibility = Visibility.Visible;
+            }
+            else {
+                if (Password != RepeatPassword || Password == null)
+                {
+                    ErrorText = "Passwords are not equal";
+                    PasswordStatusBarVisibility = Visibility.Visible;
+                }
+                else
+                {
+                    PasswordStatusBarVisibility = Visibility.Hidden;
+                    var p = new User();
+                    p.Login = Login;
+                    p.Password = Password;
+                    p.Role = 0;
+                    p.Access = false;
+                    UserRepo.Add(p);
+                }
+
+            }
+        }
     }
 }

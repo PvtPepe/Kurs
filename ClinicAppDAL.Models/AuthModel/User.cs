@@ -20,5 +20,10 @@ namespace ClinicAppDAL.Models.AuthModel
         public int Role { get; set; }
 
         public bool Access { get; set; }
+
+        public override string ToString()
+        {
+            return Login;
+        }
     }
 }

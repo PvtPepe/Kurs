@@ -1,6 +1,7 @@
 ﻿<UserControl x:Class="ClinicModule.Views.UsersListView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              prism:ViewModelLocator.AutoWireViewModel="True">
@@ -14,20 +15,30 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Row="1" ItemsSource="{Binding }">
+        <ListBox x:Name="_usersList" Grid.Row="1" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}" ItemStringFormat="">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectedCommand}" CommandParameter="{Binding SelectedItem, ElementName=_usersList}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
 
         </ListBox>
         <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="{DynamicResource MaterialDesignLightBackground}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="62*"/>
                 <ColumnDefinition Width="62*"/>
+                <ColumnDefinition Width="62*"/>
                 <ColumnDefinition Width="145*"/>
-                <ColumnDefinition Width="135*"/>
-                <ColumnDefinition Width="812*"/>
+                <ColumnDefinition Width="62*"/>
+                <ColumnDefinition Width="823*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Style="{DynamicResource MaterialDesignIconButton}" Content="{material:PackIcon Kind=PlusCircleOutline}" Margin="7,7,7,7" />
+            <Button Grid.Column="0" Style="{DynamicResource MaterialDesignIconButton}" Content="{material:PackIcon Kind=Approval}" Command="{Binding ApproveCommand}" Margin="7,7,7,7" />
+            <Button Style="{DynamicResource MaterialDesignIconButton}" Grid.Column="1" Content="{material:PackIcon Kind=TrashCanOutline}" Command="{Binding DeleteCommand}"  Margin="7,7,7,7"/>
+            <TextBox x:Name="_searchbox" Grid.Column="3" Text="{Binding SearchText}" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" FontSize="14" Height="28"/>
+            <Button Style="{DynamicResource MaterialDesignIconButton}" Grid.Column="2" Content="{material:PackIcon Kind=Magnify}" Command="{Binding SearchCommand}"  Margin="7,7,7,7"/>
+            <Button Grid.Column="4" Style="{DynamicResource MaterialDesignIconButton}" Content="{material:PackIcon Kind=ArrowUpBoldCircleOutline}" Command="{Binding MakeAdminCommand}" Margin="7,7,7,7" />
         </Grid>
         <ContentControl Grid.Row="1" Grid.Column="1" prism:RegionManager.RegionName="UserMainRegion"/>
     </Grid>

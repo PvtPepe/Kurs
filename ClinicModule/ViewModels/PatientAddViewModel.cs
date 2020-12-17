@@ -1,5 +1,5 @@
 ﻿using ClinicAppDAL.Models.ClinicModel;
-using ClinicAppDAL.Repos.ClinicRepo;
+using ClinicAppDAL.Repos;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
@@ -12,20 +12,21 @@ namespace ClinicModule.ViewModels
     public class PatientAddViewModel : BindableBase, IDialogAware
     {
         public DelegateCommand ButtonClick { get; private set; }
-        private readonly DoctorRepo repo;
+        private readonly BaseRepo<Patient> repo;
 
         public PatientAddViewModel()
         {
             ButtonClick = new DelegateCommand(Add);
-            repo = new DoctorRepo(new ClinicAppDAL.EF.ClinicAppClinicContext());
-            SelectedDoctor = new Doctor();
+            repo = new BaseRepo<Patient>(new ClinicAppDAL.EF.ClinicAppClinicContext());
+            SelectedPatient = new Patient();
+            SelectedPatient.PatientBirthdate = DateTime.Now;
         }
 
-        private Doctor _selectedDoctor;
-        public Doctor SelectedDoctor
+        private Patient _selectedPatient;
+        public Patient SelectedPatient
         {
-            get { return _selectedDoctor; }
-            set { SetProperty(ref _selectedDoctor, value); }
+            get { return _selectedPatient; }
+            set { SetProperty(ref _selectedPatient, value); }
         }
 
         public string Title => "Add patient";
@@ -34,13 +35,13 @@ namespace ClinicModule.ViewModels
 
         private void Add()
         {
-            if (SelectedDoctor.FirstName != null && SelectedDoctor.Speciality != null
-                && SelectedDoctor.LastName != null && SelectedDoctor.LengthOfService != null)
+            if (SelectedPatient.FirstName != null && SelectedPatient.PatientAdress != null
+                && SelectedPatient.LastName != null && SelectedPatient.PatientNumber != null && SelectedPatient.PatientNumber!=null)
             {
-                if (SelectedDoctor.MidName == null) SelectedDoctor.MidName = " ";
+                if (SelectedPatient.MidName == null) SelectedPatient.MidName = " ";
 
                 ButtonResult result = ButtonResult.OK;
-                repo.Add(SelectedDoctor);
+                repo.Add(SelectedPatient);
                 RequestClose(new DialogResult(result));
             }
         }

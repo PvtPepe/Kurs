@@ -23,13 +23,13 @@
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="20,20,20,20">
             <TextBlock Text="Adress:" FontSize="14"/>
-            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedPatient.PatientAdress}"  IsReadOnly="True" TextWrapping="Wrap" FontSize="14" Width="120" Margin="10,0,10,0"/>
+            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedPatient.PatientAdress}"  TextWrapping="Wrap" FontSize="14" Width="120" Margin="10,0,10,0"/>
             <TextBlock Text="Birthdate:" FontSize="14"/>
-            <DatePicker  SelectedDate="{Binding SelectedPatient.PatientBirthdate}"  FontSize="14" Width="120" Margin="10,0,0,0"/>
+            <DatePicker  SelectedDate="{Binding SelectedPatient.PatientBirthdate}"  FontSize="12" Width="120" Margin="10,0,0,0"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="20,20,20,20">
             <TextBlock Text="Number:" FontSize="14"/>
-            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedPatient.PatientNumber}"  IsReadOnly="True" TextWrapping="Wrap" FontSize="14" Width="120" Margin="18,0,10,0"/>
+            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedPatient.PatientNumber}" TextWrapping="Wrap" FontSize="14" Width="120" Margin="18,0,10,0"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" >
             <Button Content="Add" Width="60" Command="{Binding ButtonClick}" />
