@@ -18,19 +18,19 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="20,20,20,20">
             <TextBlock Text="Name:" FontSize="14"/>
-            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.FirstName}" TextWrapping="Wrap" FontSize="14" Width="120" Margin="31,0,0,0"/>
-            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.MidName}" TextWrapping="Wrap" FontSize="14" Width="120" Margin="10,0,0,0"/>
-            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.LastName}" TextWrapping="Wrap" FontSize="14" Width="120" Margin="10,0,0,0"/>
+            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.FirstName}" TextWrapping="Wrap" IsReadOnly="True" FontSize="14" Width="120" Margin="31,0,0,0"/>
+            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.MidName}" TextWrapping="Wrap" IsReadOnly="True" FontSize="14" Width="120" Margin="10,0,0,0"/>
+            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.LastName}" TextWrapping="Wrap" IsReadOnly="True" FontSize="14" Width="120" Margin="10,0,0,0"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="20,20,20,20">
             <TextBlock Text="Speciality:" FontSize="14"/>
-            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.Speciality}" TextWrapping="Wrap" FontSize="14" Width="120" Margin="10,0,10,0"/>
+            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.Speciality}" IsReadOnly="True" TextWrapping="Wrap" FontSize="14" Width="120" Margin="10,0,10,0"/>
             <TextBlock Text="Length of service:" FontSize="14"/>
-            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.LengthOfService}" TextWrapping="Wrap" FontSize="14" Width="120" Margin="10,0,0,0"/>
+            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.LengthOfService}" IsReadOnly="True" TextWrapping="Wrap" FontSize="14" Width="120" Margin="10,0,0,0"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="20,20,20,20">
             <TextBlock Text="Number:" FontSize="14"/>
-            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.DocNumber}" TextWrapping="Wrap" FontSize="14" Width="120" Margin="18,0,10,0"/>
+            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}" Text="{Binding SelectedDoctor.DocNumber}" IsReadOnly="True" TextWrapping="Wrap" FontSize="14" Width="120" Margin="18,0,10,0"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="15">
             <TextBlock Text="From:" Margin="0,5,0,0" FontSize="14"/>

@@ -37,5 +37,10 @@ namespace ClinicAppDAL.Models.ClinicModel
 
         [NotMapped]
         public string FullName => $"{FirstName} {MidName} {LastName}";
+
+        public override string ToString()
+        {
+            return FullName;
+        }
     }
 }
