@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="ClinicModule.Views.ClinicNotificationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:prism="http://prismlibrary.com/"                
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             Background="{DynamicResource MaterialDesignLightBackground}" MinWidth="200" MaxWidth="200" MinHeight="100" MaxHeight="100">
+    <UserControl.Resources>
+        <ResourceDictionary Source="MaterialDict.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="10,19,0,0" Text="Are you shure?"  VerticalAlignment="Top" Width="180" Grid.ColumnSpan="2" TextAlignment="Center"/>
+        <Button Content="Yes" Grid.Column="0"  HorizontalAlignment="Center" Command="{Binding YesCommand}"  Grid.Row="1" VerticalAlignment="Center"/>
+        <Button Content="No" Grid.Column="1"  HorizontalAlignment="Center" Command="{Binding NoCommand}"  Grid.Row="1" VerticalAlignment="Center"/>
+
+    </Grid>
+
+</UserControl>

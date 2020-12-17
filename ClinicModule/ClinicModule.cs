@@ -39,6 +39,7 @@ namespace ClinicModule
             containerRegistry.RegisterDialog<DoctorAddView, ViewModels.DoctorAddViewModel>();
             containerRegistry.RegisterDialog<PatientAddView, ViewModels.PatientAddViewModel>();
             containerRegistry.RegisterDialog<VisitAddView, ViewModels.VisitAddViewModel>();
+            containerRegistry.RegisterDialog<ClinicNotificationView, ViewModels.ClinicNotificationViewModel>();
         }
     }
 }

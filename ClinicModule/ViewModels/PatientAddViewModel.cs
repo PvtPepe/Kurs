@@ -35,8 +35,7 @@ namespace ClinicModule.ViewModels
 
         private void Add()
         {
-            if (SelectedPatient.FirstName != null && SelectedPatient.PatientAdress != null
-                && SelectedPatient.LastName != null && SelectedPatient.PatientNumber != null && SelectedPatient.PatientNumber!=null)
+            if (SelectedPatient.FirstName != null && SelectedPatient.PatientAdress != null && SelectedPatient.LastName != null && SelectedPatient.PatientNumber != null)
             {
                 if (SelectedPatient.MidName == null) SelectedPatient.MidName = " ";
 
