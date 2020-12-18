@@ -6,6 +6,7 @@ using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace ClinicModule.ViewModels
 {
@@ -16,7 +17,7 @@ namespace ClinicModule.ViewModels
 
         public DoctorAddViewModel()
         {
-            ButtonClick = new DelegateCommand(Add);
+            ButtonClick = new DelegateCommand(Add).ObservesProperty(()=> SelectedDoctor);
             repo = new DoctorRepo(new ClinicAppDAL.EF.ClinicAppClinicContext());
             SelectedDoctor = new Doctor();
         }
@@ -34,11 +35,12 @@ namespace ClinicModule.ViewModels
 
         private void Add()
         {
-            if (SelectedDoctor.FirstName != null && SelectedDoctor.Speciality != null 
-                && SelectedDoctor.LastName != null && SelectedDoctor.LengthOfService != null && SelectedDoctor.DocNumber!=null)
+            if (SelectedDoctor.FirstName != null && SelectedDoctor.Speciality != null
+                && SelectedDoctor.LastName != null && SelectedDoctor.LengthOfService != null && SelectedDoctor.DocNumber != null)
             {
+                if (!Regex.IsMatch(SelectedDoctor.DocNumber, "[0-9]{3}-[0-9]{3}-[0-9]{4}"))
+                    SelectedDoctor.DocNumber = "000-000-0000";
                 if (SelectedDoctor.MidName == null) SelectedDoctor.MidName = " ";
-
                 ButtonResult result = ButtonResult.OK;
                 repo.Add(SelectedDoctor);
                 RequestClose(new DialogResult(result));

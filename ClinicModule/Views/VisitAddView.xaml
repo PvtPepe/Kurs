@@ -5,7 +5,15 @@
              xmlns:prism="http://prismlibrary.com/"                
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              prism:ViewModelLocator.AutoWireViewModel="True"
-             Background="{DynamicResource MaterialDesignLightBackground}" MinWidth="600" MaxWidth="600" MinHeight="248" MaxHeight="248">
+             Background="{DynamicResource MaterialDesignLightBackground}">
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="Window">
+            <Setter Property="Height" Value="300"/>
+            <Setter Property="Width" Value="650"/>
+            <Setter Property="ResizeMode" Value="NoResize"/>
+            <Setter Property="ShowInTaskbar" Value="False"/>
+        </Style>
+    </prism:Dialog.WindowStyle>
     <UserControl.Resources>
         <ResourceDictionary Source="MaterialDict.xaml"/>
     </UserControl.Resources>
