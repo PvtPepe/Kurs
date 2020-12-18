@@ -20,6 +20,7 @@ namespace ClinicModule.ViewModels
         public DelegateCommand PatientAddCommand { get; private set; }
         public DelegateCommand PatientDeleteCommand { get; private set; }
         public DelegateCommand SearchCommand { get; private set; }
+        public DelegateCommand ChangeCommand { get; private set; }
 
         public PatientsListViewModel(IRegionManager regionManager, IDialogService dialogService)
         {
@@ -31,6 +32,7 @@ namespace ClinicModule.ViewModels
             PatientDeleteCommand = new DelegateCommand(PatientDelete, canDelete).ObservesProperty(() => SelectedPatient);
             PatientAddCommand = new DelegateCommand(PatientAdd);
             SearchCommand = new DelegateCommand(Search);
+            ChangeCommand = new DelegateCommand(Change, canDelete).ObservesProperty(() => SelectedPatient);
         }
 
         private ObservableCollection<Patient> patients;
@@ -106,6 +108,16 @@ namespace ClinicModule.ViewModels
         private void PatientAdd()
         {
             _dialogService.ShowDialog("PatientAddView", r =>
+            {
+                if (r.Result == ButtonResult.OK) Patients = new ObservableCollection<Patient>(patRepo.GetAll());
+            });
+        }
+
+        private void Change()
+        {
+            var p = new DialogParameters();
+            p.Add("key", SelectedPatient);
+            _dialogService.ShowDialog("PatientAddView", p, r =>
             {
                 if (r.Result == ButtonResult.OK) Patients = new ObservableCollection<Patient>(patRepo.GetAll());
             });

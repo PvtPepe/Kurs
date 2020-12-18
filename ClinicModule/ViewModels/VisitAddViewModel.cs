@@ -60,6 +60,8 @@ namespace ClinicModule.ViewModels
             set { SetProperty(ref _visDate, value); }
         }
 
+        private DoctorVisit DoctorVisit { get; set; }
+
         private ObservableCollection<Doctor> _docs;
         public ObservableCollection<Doctor> Doctors
         {
@@ -95,9 +97,25 @@ namespace ClinicModule.ViewModels
                 p.VisitDate = VisitDate;
 
                 ButtonResult result = ButtonResult.OK;
-                visRepo.Add(p);
+                if (ButtonName == "add") visRepo.Add(p);
+                else 
+                {
+                    DoctorVisit.DiagnosisID = SelectedDiagnosis.Id;
+                    DoctorVisit.DoctorID = SelectedDoctor.Id;
+                    DoctorVisit.PatientID = SelectedPatient.Id;
+                    DoctorVisit.VisitDate = VisitDate;
+                    visRepo.Update(DoctorVisit); 
+                }
+                
                 RequestClose(new DialogResult(result));
             }
+        }
+
+        private string buttonName;
+        public string ButtonName
+        {
+            get { return buttonName; }
+            set { SetProperty(ref buttonName, value); }
         }
 
         public string Title => "Add visit";
@@ -113,6 +131,13 @@ namespace ClinicModule.ViewModels
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
+            if (parameters.ContainsKey("key"))
+            {
+                ButtonName = "change";
+                DoctorVisit = parameters.GetValue<DoctorVisit>("key");
+            }
+            else
+                ButtonName = "add";
         }
     }
 }

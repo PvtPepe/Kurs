@@ -42,9 +42,17 @@ namespace ClinicModule.ViewModels
                     SelectedDoctor.DocNumber = "000-000-0000";
                 if (SelectedDoctor.MidName == null) SelectedDoctor.MidName = " ";
                 ButtonResult result = ButtonResult.OK;
-                repo.Add(SelectedDoctor);
+                if (ButtonName == "add") repo.Add(SelectedDoctor);
+                else repo.Update(SelectedDoctor);
                 RequestClose(new DialogResult(result));
             }
+        }
+
+        private string buttonName;
+        public string ButtonName
+        {
+            get { return buttonName; }
+            set { SetProperty(ref buttonName, value); }
         }
 
         public bool CanCloseDialog()
@@ -58,6 +66,13 @@ namespace ClinicModule.ViewModels
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
+            if (parameters.ContainsKey("key"))
+            {
+                ButtonName = "change";
+                SelectedDoctor = parameters.GetValue<Doctor>("key");
+            }
+            else
+                ButtonName = "add";
         }
     }
 }

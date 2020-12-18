@@ -5,6 +5,7 @@ using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace ClinicModule.ViewModels
@@ -53,14 +54,21 @@ namespace ClinicModule.ViewModels
             if (TDiagnosis.DiagnosisName != null && TDiagnosis.DiagnosisTreatment!=null)
             {
                 ButtonResult result = ButtonResult.OK;
-                repo.Add(TDiagnosis);
+                if (ButtonName == "add") repo.Add(TDiagnosis);
+                else repo.Update(TDiagnosis);
                 RequestClose(new DialogResult(result));
             }
         }
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
-            ButtonName = "Add";
+            if (parameters.ContainsKey("key"))
+            {
+                ButtonName = "change";
+                TDiagnosis = parameters.GetValue<Diagnosis>("key");
+            }
+            else
+                ButtonName = "add";
         }
     }
 }

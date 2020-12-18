@@ -44,9 +44,17 @@ namespace ClinicModule.ViewModels
                 if (DateTime.Compare(SelectedPatient.PatientBirthdate, DateTime.Now) > 0)
                     SelectedPatient.PatientBirthdate = DateTime.Now;
                 ButtonResult result = ButtonResult.OK;
-                repo.Add(SelectedPatient);
+                if (ButtonName == "add") repo.Add(SelectedPatient);
+                else repo.Update(SelectedPatient);
                 RequestClose(new DialogResult(result));
             }
+        }
+
+        private string buttonName;
+        public string ButtonName
+        {
+            get { return buttonName; }
+            set { SetProperty(ref buttonName, value); }
         }
 
         public bool CanCloseDialog()
@@ -60,6 +68,13 @@ namespace ClinicModule.ViewModels
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
+            if (parameters.ContainsKey("key"))
+            {
+                ButtonName = "change";
+                SelectedPatient = parameters.GetValue<Patient>("key");
+            }
+            else
+                ButtonName = "add";
         }
     }
 }

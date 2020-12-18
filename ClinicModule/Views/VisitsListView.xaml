@@ -32,13 +32,15 @@
                 <ColumnDefinition Width="62*"/>
                 <ColumnDefinition Width="145*"/>
                 <ColumnDefinition Width="62*"/>
-                <ColumnDefinition Width="823*"/>
+                <ColumnDefinition Width="62*"/>
+                <ColumnDefinition Width="761*"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Style="{DynamicResource MaterialDesignIconButton}" Content="{material:PackIcon Kind=PlusCircleOutline}" Command="{Binding AddCommand}" Margin="7,7,7,7" />
             <Button Style="{DynamicResource MaterialDesignIconButton}" Grid.Column="1" Content="{material:PackIcon Kind=TrashCanOutline}" Command="{Binding DeleteCommand}"  Margin="7,7,7,7"/>
-            <DatePicker x:Name="_searchbox" Grid.Column="3" SelectedDate="{Binding SearchText}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Width="120" FontSize="14" Height="28"/>
+            <DatePicker x:Name="_searchbox" Grid.Column="3" SelectedDate="{Binding SearchText}" HorizontalAlignment="Left" Margin="10,0,0,0" Width="120" FontSize="14" Height="28"/>
             <Button Style="{DynamicResource MaterialDesignIconButton}" Grid.Column="2" Content="{material:PackIcon Kind=Magnify}" Command="{Binding SearchCommand}"  Margin="7,7,7,7"/>
-            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}"  Grid.Column="4" Text="{Binding VisitCount}" HorizontalAlignment="Left" IsReadOnly="True" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="42" FontSize="14" Height="28"/>
+            <TextBox Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}"  Grid.Column="4" Text="{Binding VisitCount}" HorizontalAlignment="Center" IsReadOnly="True" TextWrapping="Wrap" VerticalAlignment="Center" Width="42" FontSize="14" Height="28"/>
+            <Button Style="{DynamicResource MaterialDesignIconButton}" Grid.Column="5" Content="{material:PackIcon Kind=WrenchOutline}" Command="{Binding ChangeCommand}"  Margin="7,7,7,7"/>
         </Grid>
         <ContentControl Grid.Row="1" Grid.Column="1" prism:RegionManager.RegionName="VisitsMainRegion"/>
     </Grid>

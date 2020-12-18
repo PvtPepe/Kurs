@@ -31,18 +31,20 @@
                 <ColumnDefinition Width="62*"/>
                 <ColumnDefinition Width="145*"/>
                 <ColumnDefinition Width="135*"/>
-                <ColumnDefinition Width="750*"/>
+                <ColumnDefinition Width="62*"/>
+                <ColumnDefinition Width="688*"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Style="{DynamicResource MaterialDesignIconButton}" Content="{material:PackIcon Kind=PlusCircleOutline}" Command="{Binding DoctorAddCommand}" Margin="7,7,7,7" />
             <Button Style="{DynamicResource MaterialDesignIconButton}" Grid.Column="1" Content="{material:PackIcon Kind=TrashCanOutline}" Command="{Binding DoctorDeleteCommand}"  Margin="7,7,7,7"/>
             <TextBox x:Name="_searchbox" Grid.Column="3" Text="{Binding SearchText}" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" FontSize="14" Height="28"/>
             <Button Style="{DynamicResource MaterialDesignIconButton}" Grid.Column="2" Content="{material:PackIcon Kind=Magnify}" Command="{Binding SearchCommand}"  Margin="7,7,7,7"/>
-            <ComboBox x:Name="_combobox" Grid.Column="4" Text="{Binding SearchCombo}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Width="120" FontSize="14" Height="28">
+            <ComboBox x:Name="_combobox" Grid.Column="4" Text="{Binding SearchCombo}" HorizontalAlignment="Left" Margin="10,0,0,0" Width="120" FontSize="14" Height="28">
                 <ComboBoxItem Content="First Name"/>
                 <ComboBoxItem Content="Middle Name"/>
                 <ComboBoxItem Content="Last Name"/>
                 <ComboBoxItem Content="Speciality"/>
             </ComboBox>
+            <Button Style="{DynamicResource MaterialDesignIconButton}" Grid.Column="5" Content="{material:PackIcon Kind=WrenchOutline}" Command="{Binding ChangeCommand}"  Margin="7,7,7,7"/>
         </Grid>
         <ContentControl Grid.Row="1" Grid.Column="1" prism:RegionManager.RegionName="DoctorsMainRegion"/>
     </Grid>
