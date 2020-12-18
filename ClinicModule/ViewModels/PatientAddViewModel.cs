@@ -6,6 +6,7 @@ using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace ClinicModule.ViewModels
 {
@@ -37,8 +38,11 @@ namespace ClinicModule.ViewModels
         {
             if (SelectedPatient.FirstName != null && SelectedPatient.PatientAdress != null && SelectedPatient.LastName != null && SelectedPatient.PatientNumber != null)
             {
+                if (!Regex.IsMatch(SelectedPatient.PatientNumber, "[0-9]{3}-[0-9]{3}-[0-9]{4}"))
+                    SelectedPatient.PatientNumber = "000-000-0000";
                 if (SelectedPatient.MidName == null) SelectedPatient.MidName = " ";
-
+                if (DateTime.Compare(SelectedPatient.PatientBirthdate, DateTime.Now) > 0)
+                    SelectedPatient.PatientBirthdate = DateTime.Now;
                 ButtonResult result = ButtonResult.OK;
                 repo.Add(SelectedPatient);
                 RequestClose(new DialogResult(result));

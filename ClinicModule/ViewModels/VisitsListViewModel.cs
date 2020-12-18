@@ -73,6 +73,7 @@ namespace ClinicModule.ViewModels
                 {
                     repo.Delete(SelectedVisit);
                     Visits = new ObservableCollection<DoctorVisit>(repo.GetAll());
+                    VisitCount = repo.GetDoctorVisitCount().ToString();
                 }
             });
             
@@ -100,6 +101,7 @@ namespace ClinicModule.ViewModels
             _dialogService.ShowDialog("VisitAddView", r =>
             {
                 if (r.Result == ButtonResult.OK) Visits = new ObservableCollection<DoctorVisit>(repo.GetAll());
+                VisitCount = repo.GetDoctorVisitCount().ToString();
             });
         }
     }
